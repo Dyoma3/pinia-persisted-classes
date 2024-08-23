@@ -1,5 +1,9 @@
-import { type QuizRType } from "~/types";
+import { type QuizRType, LetterEnum } from "~/types";
 import Question from "./question";
+
+interface SAType {
+  [n: number]: LetterEnum | null;
+}
 
 export default class Quiz {
   constructor() {
@@ -30,5 +34,14 @@ export default class Quiz {
   public getQuestion(id: number): Question | null {
     const q = this.questions.find((_q) => _q.id === id);
     return q || null;
+  }
+
+  public getSelectedAlternatives() {
+    const out: SAType = {};
+    this.questions.forEach((q, i) => {
+      out[i] = q.getSelectedAlternative();
+    });
+
+    return out
   }
 }

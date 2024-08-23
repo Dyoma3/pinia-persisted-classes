@@ -10,12 +10,9 @@ export const useQuizStore = defineStore(
 
     function useQuestion(id: Ref<number>): Question {
       const _q = quiz.getQuestion(id.value);
-
       if (!_q) throw new Error(`Question with id: ${id} not found`);
 
-
-      const question = reactive(cloneDeep(_q))
-
+      const question = reactive(cloneDeep(_q));
 
       // Update question when id changes
       watch(id, (v) => {
@@ -49,5 +46,5 @@ export const useQuizStore = defineStore(
 
     return { quiz, useQuestion };
   },
-  { persist: true },
+  { persist: false },
 );

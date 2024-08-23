@@ -1,5 +1,12 @@
+export enum LetterEnum {
+  A = 'A',
+  B = 'B',
+  C = 'C',
+  D = 'D',
+}
+
 export interface AlternativeRType {
-  number: number;
+  letter: LetterEnum;
   selected: boolean;
   text: string;
 }
