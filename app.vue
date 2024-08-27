@@ -3,8 +3,6 @@ import quizData from './lib/quizData';
 
 const quizStore = useQuizStore();
 const { quiz } = quizStore;
-
-const selAlts = computed(() => quiz.getSelectedAlternatives());
 </script>
 
 <template>
@@ -27,7 +25,10 @@ const selAlts = computed(() => quiz.getSelectedAlternatives());
     <div class="index ml-5 mt-5">
       <p>Selected</p>
       <p class="mb-2">(from quiz.questions)</p>
-      <p v-for="(sa, i) in Object.entries(selAlts)" :key="i">{{ sa[0] }}: {{ sa[1] }}</p>
+      <div v-for="(q, i) in quiz.questions" :key="i" class="d-flex">
+        <p class="w mr-3">{{ q.id }} {{ q.getSelectedAlternative() }}</p>
+        <p class="pointer" @click="q.clear()">clear</p>
+      </div>
     </div>
   </v-app>
 </template>
@@ -42,5 +43,11 @@ const selAlts = computed(() => quiz.getSelectedAlternatives());
   position: fixed;
   top: 0px;
   left: 0px;
+}
+.pointer {
+  cursor: pointer;
+}
+.w {
+  width: 40px;
 }
 </style>

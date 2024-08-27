@@ -23,4 +23,10 @@ export default class Question {
     const a = this.alternatives.find((_a) => _a.selected);
     return a?.letter || null;
   }
+
+  public clear() {
+    this.alternatives.forEach((a) => {
+      a.selected = false;
+    });
+  }
 }
