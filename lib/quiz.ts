@@ -28,7 +28,7 @@ export default class Quiz {
     this.id = q.id;
     this._createdAt = q.createdAt;
     this.name = q.name;
-    q.questions.forEach((question) => this.questions.push(new Question(question)));
+    this.questions = q.questions.map((question) => new Question(question));
   }
 
   public getQuestion(id: number): Question | null {

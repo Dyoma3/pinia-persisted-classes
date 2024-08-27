@@ -3,7 +3,7 @@ import { type QuizRType, LetterEnum } from "~/types"
 const quizData: QuizRType = {
   id: 1,
   name: 'Math Quiz',
-  createdAt: '',
+  createdAt: '2024-08-27T00:24:41.487Z',
   questions: [
     { id: 1, statement: 'How much is 1 + 1?', alternatives: [
       { letter: LetterEnum.A, selected: false, text: '1' },

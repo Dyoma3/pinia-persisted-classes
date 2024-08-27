@@ -1,5 +1,6 @@
 import Quiz from "~/lib/quiz";
 import Question from "~/lib/question";
+import { quizStoreSerializer } from './serializers/storesSerializers';
 
 import { cloneDeep } from 'lodash';
 
@@ -46,5 +47,5 @@ export const useQuizStore = defineStore(
 
     return { quiz, useQuestion };
   },
-  { persist: false },
+  { persist: { serializer: quizStoreSerializer }},
 );

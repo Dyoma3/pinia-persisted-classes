@@ -2,9 +2,7 @@
 import quizData from './lib/quizData';
 
 const quizStore = useQuizStore();
-const { quiz, useQuestion } = quizStore;
-
-quiz.load(quizData);
+const { quiz } = quizStore;
 
 const selAlts = computed(() => quiz.getSelectedAlternatives());
 </script>
@@ -13,8 +11,9 @@ const selAlts = computed(() => quiz.getSelectedAlternatives());
   <v-app>
     <div class="centered-display my-10">
       <h1>OOP in Vue</h1>
+      <v-btn class="mt-7 mb-2" @click="quiz.load(quizData)">Load quiz</v-btn>
       <h2>{{ quiz.name }}</h2>
-      <p class="my-10">*Questions are decoupled from the quiz instance to be used in other components</p>
+      <p class="mb-10">*Questions are decoupled from the quiz instance to be used in other components</p>
       <div style="width: 500px">
         <question-display
           v-for="(q, i) in quiz.questions"
